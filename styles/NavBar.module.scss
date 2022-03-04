@@ -1,0 +1,33 @@
+.navbarContainer {
+    display: flex;
+    background-color: white;
+    height: 65px;
+    width: 100%;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+
+    .navHomeBtn,
+    .navPageLocation {
+        margin-left: 20px;
+    }
+    .navHomeBtn {
+        background-color: #0fbabc;
+        border-radius: 50%;
+        width: 30px;
+        padding-left: 9px;
+        padding-top: 5px;
+
+    }
+    .navPageLocation {
+        background-color: #D9688C;
+        width: 70px;
+        height: 25px;
+        color: white;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 300;
+        text-align: center;
+        padding-top: 9px ;
+    }
+}
