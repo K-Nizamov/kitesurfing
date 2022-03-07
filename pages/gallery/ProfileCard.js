@@ -11,15 +11,78 @@ import styles from "../../styles/ProfileCard.module.scss"
 
 function ProfileCard({ instructor}) {
 
-   const instructorImages = instructor.node.postTypeInstructor.gallery
-   const instructorName = instructor.node.title
-   const instructorLicense = instructor.node.postTypeInstructor.license
-   const instructorLocation = instructor.node.postTypeInstructor.location
-   const flags = instructor.node.postTypeInstructor.flags
-   const icons = instructor.node.postTypeInstructor.icons
-   const schedule = instructor.node.postTypeInstructor.schedule
-   const description = instructor.node.content
-   const slug = instructor.node.slug
+//    const instructorImages = instructor.node.postTypeInstructor.gallery
+//    const instructorName = instructor.node.title
+//    const instructorLicense = instructor.node.postTypeInstructor.license
+//    const instructorLocation = instructor.node.postTypeInstructor.location
+//    const flags = instructor.node.postTypeInstructor.flags
+//    const icons = instructor.node.postTypeInstructor.icons
+//    const schedule = instructor.node.postTypeInstructor.schedule
+//    const description = instructor.node.content
+//    const slug = instructor.node.slug
+const instructorImages =
+instructor !== undefined &&
+    instructor.node !== undefined &&
+    instructor.node.postTypeInstructor !== undefined &&
+    instructor.node.postTypeInstructor.gallery !== undefined
+    ? instructor.node.postTypeInstructor.gallery
+    : []
+
+const flags =
+instructor !== undefined &&
+    instructor.node !== undefined &&
+    instructor.node.postTypeInstructor !== undefined &&
+    instructor.node.postTypeInstructor.flags !== undefined
+    ? instructor.node.postTypeInstructor.flags
+    : []
+const icons =
+instructor !== undefined &&
+    instructor.node !== undefined &&
+    instructor.node.postTypeInstructor !== undefined &&
+    instructor.node.postTypeInstructor.icons !== undefined
+    ? instructor.node.postTypeInstructor.icons
+    : []
+const instructorName =
+instructor !== undefined &&
+    instructor.node !== undefined &&
+    instructor.node.title !== undefined
+    ? instructor.node.title
+    : ''
+
+const slug =
+instructor !== undefined &&
+    instructor.node !== undefined &&
+    instructor.node.slug !== undefined
+    ? instructor.node.slug
+    : ''
+const description =
+instructor !== undefined &&
+    instructor.node !== undefined &&
+    instructor.node.content !== undefined
+    ? instructor.node.content
+    : ''
+
+const instructorLicense =
+instructor !== undefined &&
+    instructor.node !== undefined &&
+    instructor.node.postTypeInstructor !== undefined &&
+    instructor.node.postTypeInstructor.license !== undefined
+    ? instructor.node.postTypeInstructor.license
+    : ''
+const instructorLocation =
+instructor !== undefined &&
+    instructor.node !== undefined &&
+    instructor.node.postTypeInstructor !== undefined &&
+    instructor.node.postTypeInstructor.location !== undefined
+    ? instructor.node.postTypeInstructor.location
+    : ''
+const schedule =
+instructor !== undefined &&
+    instructor.node !== undefined &&
+    instructor.node.postTypeInstructor !== undefined &&
+    instructor.node.postTypeInstructor.schedule !== undefined
+    ? instructor.node.postTypeInstructor.schedule
+    : []
 
     SwiperCore.use([Navigation, Pagination, Autoplay])
 
