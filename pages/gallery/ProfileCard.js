@@ -9,7 +9,18 @@ import styles from "../../styles/ProfileCard.module.scss"
 
 
 
-function ProfileCard({ card }) {
+function ProfileCard({ instructor}) {
+
+   const instructorImages = instructor.node.postTypeInstructor.gallery
+   const instructorName = instructor.node.title
+   const instructorLicense = instructor.node.postTypeInstructor.license
+   const instructorLocation = instructor.node.postTypeInstructor.location
+   const flags = instructor.node.postTypeInstructor.flags
+   const icons = instructor.node.postTypeInstructor.icons
+   const schedule = instructor.node.postTypeInstructor.schedule
+   const description = instructor.node.content
+   const slug = instructor.node.slug
+
     SwiperCore.use([Navigation, Pagination, Autoplay])
 
     const [isExpanded, setIsExpanded] = useState('none')
@@ -23,15 +34,15 @@ function ProfileCard({ card }) {
         }
     }
     const slides =
-        card.imgUrl.map(img => (
+        instructorImages.map(img => (
             <SwiperSlide key={Math.random() * 1000}>
                 <img
                     className={styles.mainImg}
-                    src={img}
+                    src={img.image.mediaItemUrl}
                     width='100%'
                     height='100%'
                     style={{ position: 'relative', top: '96px', borderTopLeftRadius: '20px', borderTopRightRadius: '20px' }}
-                    alt={card.name}
+                    alt={instructorName}
                 />
             </SwiperSlide>
         ))
@@ -51,13 +62,13 @@ function ProfileCard({ card }) {
         >
 
             <div className={styles.jobAndLocation}>
-                <div>{card.job}</div>
+                <div>{instructorLicense}</div>
                 <div className={styles.location}>
                     <img src="/location.png" alt="'location"  />
-                    {card.location}
+                    {instructorLocation}
                 </div>
             </div>
-            <div className={styles.name}>{card.name}</div>
+            <div className={styles.name}>{instructorName}</div>
 
             {slides}
 
@@ -65,29 +76,28 @@ function ProfileCard({ card }) {
                 <div className={styles.iconsFlagWrapper}>
                     <div>
                         {
-                            card.icons.map(icon => (
-                                <img key={Math.random() * 1000} src={`${icon}`} width='40' alt='asetewd' />
+                            icons.map(icon => (
+                                <img key={Math.random() * 1000} src={`${icon.icon.mediaItemUrl}`} width='40' alt='asetewd' />
                             ))
 
                         }
                     </div>
                     <div className={styles.flags}>
                         {
-                            card.langugageImgs.map(flag => (
-                                <img key={Math.random() * 1000} src={`${flag}`} width='40'  alt='asqtyqd'/>
+                            flags.map(flag => (
+                                <img key={Math.random() * 1000} src={`${flag.flag.mediaItemUrl}`} width='40'  alt='asqtyqd'/>
                             ))
                         }
                     </div>
                 </div>
                 <div className={styles.days}>
                     {
-                        card.days.map(day => (
+                        schedule.map(day => (
                             <p key={Math.random() * 1000} className={styles.day} >{day}</p>
                         ))
                     }
                 </div>
-                <div>
-                    {card.description}
+                <div dangerouslySetInnerHTML={{ __html: description }}>
                 </div>
             </div>
 
@@ -95,7 +105,7 @@ function ProfileCard({ card }) {
                 <button onClick={expandHandler}><img src="/downArrow.png" width='20' height='20' alt="downArrow" /></button>
                 <div className={styles.contactWrapper}>
                     <img src="/message.png" width='30' alt="aswgsfd" />
-                    <Link href={`/profile/${card.slug}`} passHref>
+                    <Link href={`/profile/${slug}`} passHref>
                         <button className={styles.contactBtn}>CONTACT</button>
                     </Link>
                 </div>
