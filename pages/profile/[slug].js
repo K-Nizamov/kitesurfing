@@ -21,11 +21,11 @@ export default Profile;
 
 
 export async function getStaticPaths() {
-const slugs = await getAllPostsSlug()
+    const slugs = await getAllPostsSlug()
     return {
         paths:
             slugs.map((obj) => `/profile/${obj.slug}`) || [],
-        fallback: false
+        fallback: 'blocking'
 
     }
 }
@@ -35,8 +35,9 @@ export async function getStaticProps({ params }) {
     const instructor = await getInstructor(paramSlug)
 
     return {
-        props:{
+        props: {
             instructor
-        }
+        },
+        revalidate: 1
     }
 }

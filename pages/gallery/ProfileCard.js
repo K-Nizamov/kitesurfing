@@ -103,7 +103,7 @@ instructor !== undefined &&
                     className={styles.mainImg}
                     src={img.image.mediaItemUrl}
                     width='100%'
-                    height='100%'
+                    height='465'
                     style={{ position: 'relative', top: '96px', borderTopLeftRadius: '20px', borderTopRightRadius: '20px' }}
                     alt={instructorName}
                 />
