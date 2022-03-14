@@ -26,37 +26,39 @@ async function fetchAPI(query, { variables } = {}) {
 export async function getAllInstructors() {
   const data = await fetchAPI(
     `
-       query allInstructors {
-        instructors {
-          edges {
-            node {
-              title
-              slug
-              content
-              postTypeInstructor {
-                license
-                location
-                schedule
-                flags {
-                  flag {
-                    mediaItemUrl
-                  }
-                }
-                gallery {
-                  image {
-                    mediaItemUrl
-                  }
-                }
-                icons {
-                  icon {
-                    mediaItemUrl
-                  }
+    query allInstructors {
+      instructors {
+        edges {
+          node {
+            title
+            slug
+            content
+            atributes {
+              nodes {
+                slug
+                description
+              }
+            }
+            languages {
+              nodes {
+                slug
+                description
+              }
+            }
+            postTypeInstructor {
+              license
+              location
+              schedule
+              gallery {
+                image {
+                  mediaItemUrl
                 }
               }
             }
           }
         }
-      }     
+      }
+    }   
            `
   )
   return data.instructors.edges
@@ -87,22 +89,24 @@ export async function getInstructor(slug) {
         title
         slug
         content
+        atributes {
+          nodes {
+            slug
+            description
+          }
+        }
+        languages {
+          nodes {
+            slug
+            description
+          }
+        }
         postTypeInstructor {
           license
           location
           schedule
-          flags {
-            flag {
-              mediaItemUrl
-            }
-          }
           gallery {
             image {
-              mediaItemUrl
-            }
-          }
-          icons {
-            icon {
               mediaItemUrl
             }
           }

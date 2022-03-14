@@ -20,16 +20,16 @@ function OneProfile({ instructor }) {
     const flags =
         instructor !== undefined &&
             instructor.instructor !== undefined &&
-            instructor.instructor.postTypeInstructor !== undefined &&
-            instructor.instructor.postTypeInstructor.flags !== undefined
-            ? instructor.instructor.postTypeInstructor.flags
+            instructor.instructor.languages !== undefined &&
+            instructor.instructor.languages.nodes !== undefined
+            ? instructor.instructor.languages.nodes
             : []
     const icons =
         instructor !== undefined &&
             instructor.instructor !== undefined &&
-            instructor.instructor.postTypeInstructor !== undefined &&
-            instructor.instructor.postTypeInstructor.icons !== undefined
-            ? instructor.instructor.postTypeInstructor.icons
+            instructor.instructor.atributes !== undefined &&
+            instructor.instructor.atributes.nodes !== undefined
+            ? instructor.instructor.atributes.nodes
             : []
     const instructorName =
         instructor !== undefined &&
@@ -130,7 +130,7 @@ function OneProfile({ instructor }) {
                     <div>
                         {
                             icons.map(icon => (
-                                <img key={Math.random() * 1000} src={`${icon.icon.mediaItemUrl}`} width='40' alt='asetewd' />
+                                <img key={Math.random() * 1000} src={`${icon.description}`} width='40' alt='asetewd' />
                             ))
 
                         }
@@ -138,7 +138,7 @@ function OneProfile({ instructor }) {
                     <div className={styles.flags}>
                         {
                             flags.map(flag => (
-                                <img key={Math.random() * 1000} src={`${flag.flag.mediaItemUrl}`} width='40' alt='asqtyqd' />
+                                <img key={Math.random() * 1000} src={`${flag.description}`} width='40' alt='asqtyqd' />
                             ))
                         }
                     </div>
