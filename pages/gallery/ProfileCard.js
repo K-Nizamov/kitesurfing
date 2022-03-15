@@ -11,16 +11,7 @@ import styles from "../../styles/ProfileCard.module.scss"
 
 function ProfileCard({ instructor }) {
 
-    //    const instructorImages = instructor.node.postTypeInstructor.gallery
-    //    const instructorName = instructor.node.title
-    //    const instructorLicense = instructor.node.postTypeInstructor.license
-    //    const instructorLocation = instructor.node.postTypeInstructor.location
-    //    const flags = instructor.node.postTypeInstructor.flags
-    //    const icons = instructor.node.postTypeInstructor.icons
-    //    const schedule = instructor.node.postTypeInstructor.schedule
-    //    const description = instructor.node.content
-    //    const slug = instructor.node.slug
-    //    const 
+    const weekDays = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
     const instructorImages =
         instructor !== undefined &&
             instructor.node !== undefined &&
@@ -158,9 +149,14 @@ function ProfileCard({ instructor }) {
                 </div>
                 <div className={styles.days}>
                     {
-                        schedule.map(day => (
-                            <p key={Math.random() * 1000} className={styles.day} >{day}</p>
-                        ))
+                        weekDays.map(day => {
+                            if (schedule.includes(day)) {
+                                return <p key={Math.random() * 1000} className={styles.day}>{day}</p>
+                            } else {
+                                return <p key={Math.random() * 1000} className={styles.day} style={{ backgroundColor: '#7dc0c0', color: 'black' }}  >{day}</p>
+                            }
+                        }
+                        )
                     }
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: description }}>

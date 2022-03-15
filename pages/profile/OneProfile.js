@@ -9,6 +9,8 @@ import styles from "../../styles/ProfileCard.module.scss"
 
 function OneProfile({ instructor }) {
 
+    const weekDays = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
+
     const instructorImages =
         instructor !== undefined &&
             instructor.instructor !== undefined &&
@@ -145,9 +147,14 @@ function OneProfile({ instructor }) {
                 </div>
                 <div className={styles.days}>
                     {
-                        schedule.map(day => (
-                            <p key={Math.random() * 1000} className={styles.day} >{day}</p>
-                        ))
+                        weekDays.map(day => {
+                            if (schedule.includes(day)) {
+                                return <p key={Math.random() * 1000} className={styles.day}>{day}</p>
+                            } else {
+                                return <p key={Math.random() * 1000} className={styles.day} style={{ backgroundColor: '#7dc0c0', color: 'black' }}  >{day}</p>
+                            }
+                        }
+                        )
                     }
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: description }}>
